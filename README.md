@@ -11,6 +11,7 @@ Additionally, it stores previously paired devices to allow reconnecting again ea
 </p>
 
 ## APK for testing
+You can find the apk file under apk/ path in this repository.
 
 ## How to use
 This app supports devices running Android 8 (API 26) or later versions.
