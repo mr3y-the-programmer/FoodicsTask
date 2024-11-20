@@ -38,6 +38,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.foodicstask.presentation.BluetoothViewModel
 import com.example.foodicstask.ui.components.BluetoothNotSupportedView
+import com.example.foodicstask.ui.screen.BLEClientScreen
+import com.example.foodicstask.ui.screen.BLEServerScreen
 import com.example.foodicstask.ui.screen.ChatScreen
 import com.example.foodicstask.ui.screen.DevicesScreen
 import com.example.foodicstask.ui.theme.FoodicsTaskTheme
@@ -111,6 +113,7 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
+                var actAsBLEType: String? by remember { mutableStateOf(null) }
                 Scaffold(
                     snackbarHost = { SnackbarHost(snackBarHostState) },
                     modifier = Modifier.fillMaxSize()
@@ -138,6 +141,22 @@ class MainActivity : ComponentActivity() {
                                     .fillMaxSize()
                             )
                         }
+                        actAsBLEType == "client" -> {
+                            BLEClientScreen(
+                                onBackClick = { actAsBLEType = null },
+                                modifier = Modifier
+                                    .padding(contentPadding)
+                                    .fillMaxSize()
+                            )
+                        }
+                        actAsBLEType == "server" -> {
+                            BLEServerScreen(
+                                onBackClick = { actAsBLEType = null },
+                                modifier = Modifier
+                                    .padding(contentPadding)
+                                    .fillMaxSize()
+                            )
+                        }
                         else -> {
                             val enableDiscoverabilityLauncher = rememberLauncherForActivityResult(
                                 contract = ActivityResultContracts.StartActivityForResult()
@@ -156,6 +175,8 @@ class MainActivity : ComponentActivity() {
                                         }
                                     )
                                 },
+                                onBLEClientClick = { actAsBLEType = "client" },
+                                onBLEServerClick = { actAsBLEType = "server" },
                                 modifier = Modifier
                                     .padding(contentPadding)
                                     .fillMaxSize()

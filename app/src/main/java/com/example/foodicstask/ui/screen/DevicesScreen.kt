@@ -29,6 +29,8 @@ fun DevicesScreen(
     onStartServerClick: () -> Unit,
     onDeviceClick: (Device) -> Unit,
     onEnableDiscoverClick: () -> Unit,
+    onBLEClientClick: () -> Unit,
+    onBLEServerClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -58,6 +60,8 @@ fun DevicesScreen(
             onStopScanClick = onStopScanClick,
             onStartServerClick = onStartServerClick,
             onEnableDiscoverClick = onEnableDiscoverClick,
+            onBLEClientClick = onBLEClientClick,
+            onBLEServerClick = onBLEServerClick,
             modifier = Modifier.fillMaxWidth()
         )
     }
@@ -71,6 +75,8 @@ private fun ControlPanel(
     onStopScanClick: () -> Unit,
     onStartServerClick: () -> Unit,
     onEnableDiscoverClick: () -> Unit,
+    onBLEClientClick: () -> Unit,
+    onBLEServerClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -104,6 +110,17 @@ private fun ControlPanel(
             enabled = !isDeviceDiscoverable
         ) {
             Text("Enable discoverability")
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
+            Button(onClick = onBLEClientClick) {
+                Text("Act as BLE Client")
+            }
+            Button(onClick = onBLEServerClick) {
+                Text("Act as BLE Server")
+            }
         }
     }
 }
