@@ -24,3 +24,10 @@ This app supports devices running Android 8 (API 26) or later versions.
    - Bluetooth pairing dialog with pairing code appears on both devices.
    - Click on "Pair", then you'll be navigated to a new screen where you can start sending & receiving messages between devices.
 5. If devices are paired previously, then click on "Start Server" on one device and then click on that device item from "Paired Devices" list on the other device.
+
+## Tech Stack
+- Clean Architecture (data, domain, UI) layers where data -> domain <- UI.
+- RecyclerView
+- Jetpack Compose
+- AndroidX
+- Dagger Hilt
